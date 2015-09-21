@@ -9,10 +9,10 @@
 // OR NON-INFRINGEMENT. 
 //----------------------------------------------------------------------------------
 
-using System;
-
 namespace PowerBIConnector
 {
+    using System;
+
     public class StorageURL
     {
         private const string RESOURCEID = "resourceId";

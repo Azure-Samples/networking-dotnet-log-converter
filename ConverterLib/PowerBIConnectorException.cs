@@ -9,10 +9,11 @@
 // OR NON-INFRINGEMENT. 
 //----------------------------------------------------------------------------------
 
-using System;
-
 namespace PowerBIConnector
 {
+
+    using System;
+
     class PowerBIConnectorException : Exception
     {
         public PowerBIConnectorException(string message) : base(message)

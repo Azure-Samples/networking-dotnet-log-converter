@@ -9,10 +9,10 @@
 // OR NON-INFRINGEMENT. 
 //----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace PowerBIConnector
 {
+    using System.Collections.Generic;
+
     public class LogPropertyBase
     {
         public string macAddress { get; set; }
