@@ -11,7 +11,6 @@
 
 namespace PowerBIConnector
 {
-
     using System;
 
     class PowerBIConnectorException : Exception

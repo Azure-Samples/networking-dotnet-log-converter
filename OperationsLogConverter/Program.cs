@@ -25,6 +25,18 @@ namespace OperationsLogConverterSample
 
     public class Program
     {
+        /************************************************************************************* 
+         ** Read this to configure your subscriptionid, tenantid, client id and uri 
+         ** 1.	SubscriptionID: 
+         **        1. https://manage.windowsazure.com > Settings > SUBSCRIPTION ID 
+         **           OR
+         **        2. https://portal.azure.com > Browse > Subscriptions > SUBSCRIPTION ID 
+         ** 2.	For TenantID/ClientID/URI follow the "Set up authentication using the Management Portal" step in Authenticating Azure Resource Manager requests 
+         **        1. TenantID - found in Step 3.3 
+         **        2. ClientID(aka Application ID) - found in Step 3.3 
+         **        3. URI(aka Redirect URI) - found in Step 1.4 
+         *************************************************************************************/
+
         private const string SubscriptionID = "<Azure Subscription ID>";
         private const string TenantID = "<Azure Active Directory Tenant ID>";
         private const string ClientID = "<Client ID or Application ID>";
@@ -52,7 +64,7 @@ namespace OperationsLogConverterSample
 
             ResourceManagementClient resClient = new ResourceManagementClient(credentials);
 
-            IList<EventData> logList = response.EventDataCollection.Value;
+            IList<EventData> logList = response.EventDataCollection.Value;            
 
             ExportOpsLogToCSV(logList, resClient);
 
@@ -79,10 +91,11 @@ namespace OperationsLogConverterSample
         {
             using (StreamWriter file = new StreamWriter(CSVExportNamePath))
             {
-                file.WriteLine("SubscriptionId,EventTimeStamp,EventDate,EventDataId,CorrelationId,EventName,Level,"
-                               + "ResourceGroupName,ResourceProviderName,ResourceUri,ResourceName,ResourceLocation,"
-                               + "Status,Caller,OperationId,OperationName,OperationRP,OperationResType,OperationType,"
-                               + "Description,Title,Service,Region,Transcript,IncidentId,IncidentType");
+                file.WriteLine("SubscriptionId,EventTimeStamp,EventDate,EventDataId,CorrelationId,EventName,Level"
+                               + ",ResourceGroupName,ResourceProviderName,ResourceUri,ResourceName,ResourceLocation"
+                               + ",Status,Caller,OperationId,OperationName,OperationRP,OperationResType,OperationType"
+                               + ",Description,Title,Service,Region,Transcript,IncidentId,IncidentType"
+                               + ",Authorization.Role");
 
                 foreach(EventData eventEntry in eventDataList)
                 {
@@ -92,14 +105,16 @@ namespace OperationsLogConverterSample
 
                     DateTime convertedTimeStamp = eventEntry.EventTimestamp.ToUniversalTime();
 
+                    
+
                     file.WriteLine($"{eventEntry.SubscriptionId},{convertedTimeStamp},{convertedTimeStamp.Date},{eventEntry.EventDataId?.Replace(',', ';')}"
                                    + $",{eventEntry.CorrelationId?.Replace(',', ';')},{eventEntry.CorrelationId?.Replace(',', ';')},{eventEntry.EventName.Value?.Replace(',', ';')}"
-                                   + $",{eventEntry.Level.ToString()},{eventEntry.ResourceGroupName?.Replace(',', ';')},{eventEntry.ResourceProviderName.Value?.Replace(',', ';')}"
+                                   + $",{eventEntry.Level},{eventEntry.ResourceGroupName?.Replace(',', ';')},{eventEntry.ResourceProviderName.Value?.Replace(',', ';')}"
                                    + $",{eventEntry.ResourceUri?.Replace(',', ';')},{resourceNameUriPair.Item1},{resourceNameUriPair.Item2},{eventEntry.Status.Value?.Replace(',', ';')}"
                                    + $",{eventEntry.Status.Value?.Replace(',', ';')},{eventEntry.Caller?.Replace(',', ';')},{eventEntry.OperationId},{eventEntry.OperationName.Value?.Replace(',', ';')}"
                                    + $",{operationNameTrio.Item1},{operationNameTrio.Item2},{operationNameTrio.Item3},{eventEntry.Description?.Replace(',', ';').Replace(System.Environment.NewLine, string.Empty)}"
                                    + $",{resourceProviderSextet.Item1},{resourceProviderSextet.Item2},{resourceProviderSextet.Item3},{resourceProviderSextet.Item4}"
-                                   + $",{resourceProviderSextet.Item5},{resourceProviderSextet.Item6}");
+                                   + $",{resourceProviderSextet.Item5},{resourceProviderSextet.Item6},{eventEntry.Authorization.Role}");
                 }
             }
         }
@@ -116,12 +131,12 @@ namespace OperationsLogConverterSample
 
             if (eventEntry.ResourceProviderName.Value == "Azure.Health")
             {
-                string titleProp = eventEntry.Properties.ContainsKey("Title") ? eventEntry.Properties["Title"].Replace(',', ';').Replace(System.Environment.NewLine, string.Empty) : string.Empty;
-                string serviceProp = eventEntry.Properties.ContainsKey("Service") ? eventEntry.Properties["Service"].Replace(',', ';').Replace(System.Environment.NewLine, string.Empty) : string.Empty;
-                string regionProp = eventEntry.Properties.ContainsKey("Region") ? eventEntry.Properties["Region"].Replace(',', ';').Replace(System.Environment.NewLine, string.Empty) : string.Empty;
-                string tranCommProp = eventEntry.Properties.ContainsKey("Transcript Of Communication") ? eventEntry.Properties["Transcript Of Communication"].Replace(',', ';').Replace(System.Environment.NewLine, string.Empty) : string.Empty;
-                string incidentIDProp = eventEntry.Properties.ContainsKey("IncidentId") ? eventEntry.Properties["IncidentId"].Replace(',', ';').Replace(System.Environment.NewLine, string.Empty) : string.Empty;
-                string incidentTypeProp = eventEntry.Properties.ContainsKey("IncidentType") ? eventEntry.Properties["IncidentType"].Replace(',', ';').Replace(System.Environment.NewLine, string.Empty) : string.Empty;
+                string titleProp = eventEntry.Properties.ContainsKey("Title") ? eventEntry.Properties["Title"].Replace(',', ';').Replace(Environment.NewLine, string.Empty) : string.Empty;
+                string serviceProp = eventEntry.Properties.ContainsKey("Service") ? eventEntry.Properties["Service"].Replace(',', ';').Replace(Environment.NewLine, string.Empty) : string.Empty;
+                string regionProp = eventEntry.Properties.ContainsKey("Region") ? eventEntry.Properties["Region"].Replace(',', ';').Replace(Environment.NewLine, string.Empty) : string.Empty;
+                string tranCommProp = eventEntry.Properties.ContainsKey("Transcript Of Communication") ? eventEntry.Properties["Transcript Of Communication"].Replace(',', ';').Replace(Environment.NewLine, string.Empty) : string.Empty;
+                string incidentIDProp = eventEntry.Properties.ContainsKey("IncidentId") ? eventEntry.Properties["IncidentId"].Replace(',', ';').Replace(Environment.NewLine, string.Empty) : string.Empty;
+                string incidentTypeProp = eventEntry.Properties.ContainsKey("IncidentType") ? eventEntry.Properties["IncidentType"].Replace(',', ';').Replace(Environment.NewLine, string.Empty) : string.Empty;
 
                 resultSet = new Tuple<string, string, string, string, string, string>(titleProp, serviceProp, regionProp, tranCommProp, incidentIDProp, incidentTypeProp);
             }

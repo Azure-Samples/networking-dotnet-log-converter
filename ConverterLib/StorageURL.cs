@@ -13,6 +13,9 @@ namespace PowerBIConnector
 {
     using System;
 
+    /// <summary>
+    /// Utility class used to generate log storage Uri. 
+    /// </summary>
     public class StorageURL
     {
         private const string RESOURCEID = "resourceId";
