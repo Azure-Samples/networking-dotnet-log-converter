@@ -13,6 +13,11 @@ namespace PowerBIConnector
 {
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Type definitions for parsing JSON log entries.
+    /// NetworkSecurityGroupRuleCounter.Log class encapsulates counters log.
+    /// NetworkSecurityGroupRuleEvent.Log class encapsulates events log.
+    /// </summary>
     public class LogPropertyBase
     {
         public string macAddress { get; set; }
