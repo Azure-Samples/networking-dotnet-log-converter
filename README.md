@@ -11,8 +11,8 @@ Code for downloading network monitoring logs and converting them to .CSV files t
     * Visual Studio 2015
 	* Microsoft Azure SDK - Latest
 	* Cloud Explorer for Visual Studio 2015 - Visual Studio Extension
-## Deploy this sample to Azure
-Coming soon...
+## Solution Contents
+
 ## About the code
 Coming soon...
 ## More information
