@@ -1,13 +1,16 @@
 ---
-services:
-platforms:
-author: azure
+services:  storage
+platforms: .net 4.6
+author: azure networking
 ---
 
 # networking-powerbi-connector
 Code for downloading network monitoring logs and converting them to .CSV files to be uploaded to Power BI for analysis.
 ## Running this sample
-Coming soon...
+### Prerequisites:
+    * Visual Studio 2015
+	* Microsoft Azure SDK - Latest
+	* Cloud Explorer for Visual Studio 2015 - Visual Studio Extension
 ## Deploy this sample to Azure
 Coming soon...
 ## About the code
