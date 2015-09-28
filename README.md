@@ -17,10 +17,14 @@ Code for downloading network monitoring logs and converting them to .CSV files t
 ## Solution Contents
 The solution contains 3  executable projects CountersLogConverter, EventsLogConverter and OperationsLogConverter.
 
+```
 1.  CountersLogConverter
+```
+```
 2.  EventsLogConverter
 ```
-**3.  OperationsLogConverter**
+```
+3.  OperationsLogConverter
 
 Fore more information goto: https://msdn.microsoft.com/en-us/library/azure/dn790557.aspx
 ```
