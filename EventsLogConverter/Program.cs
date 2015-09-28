@@ -127,7 +127,7 @@ namespace EventsLogConverterSample
                 file.WriteLine("time,systemId,resourceId,operationName,properties.vnetResourceGuid,properties.subnetPrefix"
                               + ",properties.macAddress,properties.ruleName,properties.direction,properties.priority"
                               + ",properties.type,properties.conditions.destinationPortRange,properties.conditions.sourcePortRange"
-                              + ",properties.conditions.sourceIP,properties.conditions.destinationIP");
+                              + ",properties.conditions.sourceIP,properties.conditions.destinationIP,properties.conditions.protocols");
 
                 foreach (Log log in logs)
                 {
@@ -135,8 +135,11 @@ namespace EventsLogConverterSample
                                   + $", {log.properties.vnetResourceGuid}, {log.properties.subnetPrefix}, {log.properties.macAddress}"
                                   + $", {log.properties.ruleName}, {log.properties.direction}, {log.properties.priority}, {log.properties.type}"
                                   + $", {log.properties.conditions.destinationPortRange}, {log.properties.conditions.sourcePortRange}"
-                                  + $", {log.properties.conditions.sourceIP?.Replace(',', ';')}, {log.properties.conditions.destinationIP?.Replace(',', ';')}");
+                                  + $", {log.properties.conditions.sourceIP?.Replace(',', ';')}, {log.properties.conditions.destinationIP?.Replace(',', ';')}"
+                                  + $", {(string.IsNullOrWhiteSpace(log.properties.conditions.protocols) ? "*" : log.properties.conditions.protocols?.Replace(',', ';'))}");
                 }
+
+
             }
         }
     }

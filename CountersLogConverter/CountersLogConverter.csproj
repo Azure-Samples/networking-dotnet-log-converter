@@ -7,8 +7,8 @@
     <ProjectGuid>{3AB3C315-9911-4013-955F-CF0162880532}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataBlobStorage</RootNamespace>
-    <AssemblyName>DataBlobStorage</AssemblyName>
+    <RootNamespace>CountersLogConverter</RootNamespace>
+    <AssemblyName>CountersLogConverter</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>

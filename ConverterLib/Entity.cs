@@ -75,6 +75,8 @@ namespace PowerBIConnector
             public string sourceIP { get; set; }
 
             public string destinationIP { get; set; }
+
+            public string protocols { get; set; }
         }
 
         public class LogProperty : LogPropertyBase
