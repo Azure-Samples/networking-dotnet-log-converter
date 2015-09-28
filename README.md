@@ -11,8 +11,8 @@ Code for downloading network monitoring logs and converting them to .CSV files t
 ### Prerequisites:
 
 * Visual Studio 2015
-* Microsoft Azure SDK - Latest
-* Cloud Explorer for Visual Studio 2015 - Visual Studio Extension
+* Microsoft Azure SDK - [Latest](https://azure.microsoft.com/en-us/downloads/)
+* Cloud Explorer for Visual Studio 2015 - [Visual Studio Extension](https://visualstudiogallery.msdn.microsoft.com/84e83a7c-9606-4f9f-83dd-0f6182f13add)
  
 ## Solution Contents
 The solution contains 3  executable projects CountersLogConverter, EventsLogConverter and OperationsLogConverter.
