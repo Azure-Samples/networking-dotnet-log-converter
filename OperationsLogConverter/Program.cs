@@ -41,7 +41,7 @@ namespace OperationsLogConverterSample
         private const string TenantID = "<Azure Active Directory Tenant ID>";
         private const string ClientID = "<Client ID or Application ID>";
         private const string CSVExportNamePath = "OpsLog.csv";
-        private static readonly Uri RedirectURI = new Uri("http://www.microsoft.com");
+        private static readonly Uri RedirectURI = new Uri("http://www.microsoft.com");        
 
         static void Main(string[] args)
         {
@@ -59,7 +59,6 @@ namespace OperationsLogConverterSample
             
             string filterString = FilterString.Generate<ListEventsForResourceProviderParameters>(eventData => (eventData.EventTimestamp >= startDateTime) && (eventData.EventTimestamp <= endDateTime));
                      
-
             EventDataListResponse response = client.EventOperations.ListEvents(filterString, selectedProperties: null);
 
             ResourceManagementClient resClient = new ResourceManagementClient(credentials);
@@ -104,13 +103,22 @@ namespace OperationsLogConverterSample
 
                     DateTime convertedTimeStamp = eventEntry.EventTimestamp.ToUniversalTime();
 
+
+                    //                           SubscriptionId | EventTimeStamp     | EventDate               | EventDataId  
                     file.WriteLine($"{eventEntry.SubscriptionId},{convertedTimeStamp},{convertedTimeStamp.Date},{eventEntry.EventDataId?.Replace(',', ';')}"
-                                   + $",{eventEntry.CorrelationId?.Replace(',', ';')},{eventEntry.CorrelationId?.Replace(',', ';')},{eventEntry.EventName.Value?.Replace(',', ';')}"
+                    //                 | CorrelationId                               | EventName
+                                   + $",{eventEntry.CorrelationId?.Replace(',', ';')},{eventEntry.EventName.Value?.Replace(',', ';')}"
+                    //                 | Level            | ResourceGroupName                               | ResourceProviderName 
                                    + $",{eventEntry.Level},{eventEntry.ResourceGroupName?.Replace(',', ';')},{eventEntry.ResourceProviderName.Value?.Replace(',', ';')}"
+                    //                 | ResourceUri                               | ResourceName              | ResourceLocation          | Status
                                    + $",{eventEntry.ResourceUri?.Replace(',', ';')},{resourceNameUriPair.Item1},{resourceNameUriPair.Item2},{eventEntry.Status.Value?.Replace(',', ';')}"
-                                   + $",{eventEntry.Status.Value?.Replace(',', ';')},{eventEntry.Caller?.Replace(',', ';')},{eventEntry.OperationId},{eventEntry.OperationName.Value?.Replace(',', ';')}"
+                    //                 | Caller                               | OperationId            | OperationName  
+                                   + $",{eventEntry.Caller?.Replace(',', ';')},{eventEntry.OperationId},{eventEntry.OperationName.Value?.Replace(',', ';')}"
+                    //                 | OperationRP             | OperationResType        | OperationType           | Description                         
                                    + $",{operationNameTrio.Item1},{operationNameTrio.Item2},{operationNameTrio.Item3},{eventEntry.Description?.Replace(',', ';').Replace(System.Environment.NewLine, string.Empty)}"
+                    //                 | Title                        | Service                      | Region                       | Transcript  
                                    + $",{resourceProviderSextet.Item1},{resourceProviderSextet.Item2},{resourceProviderSextet.Item3},{resourceProviderSextet.Item4}"
+                    //                 | IncidentId                   | IncidentType
                                    + $",{resourceProviderSextet.Item5},{resourceProviderSextet.Item6}");
                 }
             }
