@@ -19,16 +19,20 @@ The solution contains 3  executable projects CountersLogConverter, EventsLogConv
 
 ```
 1.  CountersLogConverter
+
+In order to use this code logging must be turned on via SDK or Ibiza portal (soon to be released)
+and familiarity with Azure Resource Manager is required.
 ```
 ```
 2.  EventsLogConverter
+
+In order to use this code logging must be turned on via SDK or Ibiza portal (soon to be released)
+and familiarity with Azure Resource Manager is required.
 ```
 ```
 3.  OperationsLogConverter
 
-Fore more information goto: https://msdn.microsoft.com/en-us/library/azure/dn790557.aspx
+This app needs to be authorized to access Azure AD management API.
+Fore more information on Azure AD authorization go to: https://msdn.microsoft.com/en-us/library/azure/dn790557.aspx
 ```
-## About the code
-Coming soon...
-## More information
-Coming soon...
+
