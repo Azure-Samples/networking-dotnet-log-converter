@@ -4,7 +4,7 @@ platforms: dotnet
 author: JayHCho
 ---
 
-# Azure Networking PowerBI Connector
+# Azure Networking Log Converter
 
 Code for downloading network monitoring logs and converting them to .CSV files to be uploaded to Power BI for analysis.
 ## Running this sample
