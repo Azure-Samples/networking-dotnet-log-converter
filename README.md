@@ -6,13 +6,14 @@ author: JayHCho
 
 # Azure Networking Log Converter
 
-Code for downloading network monitoring logs and converting them to .CSV files to be uploaded to Power BI for analysis.
+Code for downloading operational network logs and converting them to .CSV files.  Files can to be then uploaded to Power BI for analysis.
 ## Running this sample
 ### Prerequisites:
 
 * Visual Studio 2015
+* .net framework 4.6
 * Microsoft Azure SDK - [Latest](https://azure.microsoft.com/en-us/downloads/)
-* Cloud Explorer for Visual Studio 2015 - [Visual Studio Extension](https://visualstudiogallery.msdn.microsoft.com/84e83a7c-9606-4f9f-83dd-0f6182f13add)
+* Cloud Explorer for Visual Studio 2015 - [Visual Studio Extension](https://visualstudiogallery.msdn.microsoft.com/84e83a7c-9606-4f9f-83dd-0f6182f13add) (recommended)
  
 ## Solution Contents
 The solution contains 3  executable projects CountersLogConverter, EventsLogConverter and OperationsLogConverter.
@@ -20,7 +21,7 @@ The solution contains 3  executable projects CountersLogConverter, EventsLogConv
 
 #####1.  CountersLogConverter
 
-In order to use this code logging must be turned on via SDK or Ibiza portal (soon to be released)
+In order to use this code, logging must be turned on via SDK or Ibiza portal (soon to be released)
 and familiarity with Azure Resource Manager is required.
 
 The counters logs are stored in the Azure Storage Container as JSON blobs
@@ -52,7 +53,7 @@ time|systemId|resourceId|operationName|properties.vnetResourceGuid|properties.su
 
 #####2.  EventsLogConverter
 
-In order to use this code logging must be turned on via SDK or Ibiza portal (soon to be released)
+In order to use this code, logging must be turned on via SDK or Ibiza portal (soon to be released)
 and familiarity with Azure Resource Manager is required.
 
 The events logs are stored in the Azure Storage Container as JSON blobs
