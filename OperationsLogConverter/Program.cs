@@ -94,8 +94,7 @@ namespace OperationsLogConverterSample
                 file.WriteLine("SubscriptionId,EventTimeStamp,EventDate,EventDataId,CorrelationId,EventName,Level"
                                + ",ResourceGroupName,ResourceProviderName,ResourceUri,ResourceName,ResourceLocation"
                                + ",Status,Caller,OperationId,OperationName,OperationRP,OperationResType,OperationType"
-                               + ",Description,Title,Service,Region,Transcript,IncidentId,IncidentType"
-                               + ",Authorization.Role");
+                               + ",Description,Title,Service,Region,Transcript,IncidentId,IncidentType");
 
                 foreach(EventData eventEntry in eventDataList)
                 {
@@ -105,8 +104,6 @@ namespace OperationsLogConverterSample
 
                     DateTime convertedTimeStamp = eventEntry.EventTimestamp.ToUniversalTime();
 
-                    
-
                     file.WriteLine($"{eventEntry.SubscriptionId},{convertedTimeStamp},{convertedTimeStamp.Date},{eventEntry.EventDataId?.Replace(',', ';')}"
                                    + $",{eventEntry.CorrelationId?.Replace(',', ';')},{eventEntry.CorrelationId?.Replace(',', ';')},{eventEntry.EventName.Value?.Replace(',', ';')}"
                                    + $",{eventEntry.Level},{eventEntry.ResourceGroupName?.Replace(',', ';')},{eventEntry.ResourceProviderName.Value?.Replace(',', ';')}"
@@ -114,7 +111,7 @@ namespace OperationsLogConverterSample
                                    + $",{eventEntry.Status.Value?.Replace(',', ';')},{eventEntry.Caller?.Replace(',', ';')},{eventEntry.OperationId},{eventEntry.OperationName.Value?.Replace(',', ';')}"
                                    + $",{operationNameTrio.Item1},{operationNameTrio.Item2},{operationNameTrio.Item3},{eventEntry.Description?.Replace(',', ';').Replace(System.Environment.NewLine, string.Empty)}"
                                    + $",{resourceProviderSextet.Item1},{resourceProviderSextet.Item2},{resourceProviderSextet.Item3},{resourceProviderSextet.Item4}"
-                                   + $",{resourceProviderSextet.Item5},{resourceProviderSextet.Item6},{eventEntry.Authorization.Role}");
+                                   + $",{resourceProviderSextet.Item5},{resourceProviderSextet.Item6}");
                 }
             }
         }
