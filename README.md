@@ -11,7 +11,7 @@ Code for downloading operational network logs and converting them to .CSV files.
 ### Prerequisites:
 
 * Visual Studio 2015
-* .net framework 4.6
+* .NET Framework 4.6
 * Microsoft Azure SDK - [Latest](https://azure.microsoft.com/en-us/downloads/)
 * Cloud Explorer for Visual Studio 2015 - [Visual Studio Extension](https://visualstudiogallery.msdn.microsoft.com/84e83a7c-9606-4f9f-83dd-0f6182f13add) (recommended)
  
