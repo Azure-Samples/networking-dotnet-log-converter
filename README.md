@@ -46,8 +46,17 @@ The counters logs are stored in the Azure Storage Container as JSON blobs
 
 Converted .CSV file of counter log has following columns
 
-time|systemId|resourceId|operationName|properties.vnetResourceGuid|properties.subnetPrefix|properties.macAddress|properties.ruleName|properties.direction|properties.type|properties.matchedConnections
----|---|---|---|---|---|---|---|---|---|---
+1. *time*
+2. *systemId*
+3. *resourceId*
+4. *operationName*
+5. *properties.vnetResourceGuid*
+6. *properties.subnetPrefix*
+7. *properties.macAddress*
+8. *properties.ruleName*
+9. *properties.direction*
+10. *properties.type*
+11. *properties.matchedConnections*
 
 ---
 
@@ -84,8 +93,22 @@ The events logs are stored in the Azure Storage Container as JSON blobs
 
 Converted .CSV file of events log has following columns
 
-time|systemId|resourceId|operationName|properties.vnetResourceGuid|properties.subnetPrefix|properties.macAddress|properties.ruleName|properties.direction|properties.priority|properties.type|properties.conditions.destinationPortRange|properties.conditions.sourcePortRange|properties.conditions.sourceIP|properties.conditions.destinationIP|properties.conditions.protocols
----|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
+1. *time*
+2. *systemId*
+3. *resourceId*
+4. *operationName*
+5. *properties.vnetResourceGuid*
+6. *properties.subnetPrefix*
+7. *properties.macAddress*
+8. *properties.ruleName*
+9. *properties.direction*
+10. *properties.priority*
+11. *properties.type*
+12. *properties.conditions.destinationPortRange*
+13. *properties.conditions.sourcePortRange*
+14. *properties.conditions.sourceIP*
+15. *properties.conditions.destinationIP*
+16. *properties.conditions.protocols*
 
 ---
 
@@ -98,10 +121,32 @@ Operations logs are retrieved through the Azure Insight API.  For available prop
 
 Converted .CSV file of operations log has following columns.
 
-
-SubscriptionId|EventTimeStamp|EventDate|EventDataId|CorrelationId|EventName|Level|ResourceGroupName|ResourceProviderName|ResourceUri|ResourceName|ResourceLocation|Status|Caller|OperationId|OperationName|OperationRP|OperationResType|OperationType|Description|Title|Service|Region|Transcript|IncidentId|IncidentType
----|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
-
+1. *SubscriptionId*
+2. *EventTimeStamp*
+3. *EventDate*
+4. *EventDataId*
+5. *CorrelationId*
+6. *EventName*
+7. *Level*
+8. *ResourceGroupName*
+9. *ResourceProviderName*
+10. *ResourceId*
+11. *ResourceName*
+12. *ResourceLocation*
+13. *Status*
+14. *Caller*
+15. *OperationId*
+16. *OperationName*
+17. *OperationRP*
+18. *OperationResType*
+19. *OperationType*
+20. *Description*
+21. *Title*
+22. *Service*
+23. *Region*
+24. *Transcript*
+25. *IncidentId*
+26. *IncidentType*
 
 ---
 
