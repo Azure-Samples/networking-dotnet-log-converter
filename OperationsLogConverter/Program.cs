@@ -38,20 +38,13 @@ namespace OperationsLogConverterSample
          **        2. ClientID(aka Application ID) - found in Step 3.3 
          **        3. URI(aka Redirect URI) - found in Step 1.4 
          *************************************************************************************/
-        /*
+
         private const string SubscriptionID = "<Azure Subscription ID>";
         private const string TenantID = "<Azure Active Directory Tenant ID>";
         private const string ClientID = "<Client ID or Application ID>";
         private const string CSVExportNamePath = "OpsLog.csv";
         private static readonly Uri RedirectURI = new Uri("http://www.microsoft.com");
-        */
-
-        private const string SubscriptionID = "94d70cd4-5cc8-454c-82e4-f87a7688be4d";
-        private const string TenantID = "e9801327-3561-4b83-8e67-6031e126403d";
-        private const string ClientID = "b90172d7-8fb4-41b8-bf8f-0f09ace25ff2";
-        private const string CSVExportNamePath = "OpsLog2.csv";
-        private static readonly Uri RedirectURI = new Uri("http://www.microsoft.com");
-        private const double days = -90; //max = -90  (90 days of logs is stored by audit logs)
+        private const double days = -10; //max = -90  (90 days of logs is stored by audit logs)
 
         static void Main(string[] args)
         {
