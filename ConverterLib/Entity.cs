@@ -12,6 +12,7 @@
 namespace PowerBIConnector
 {
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Type definitions for parsing JSON log entries.
@@ -83,6 +84,60 @@ namespace PowerBIConnector
         {
             public string priority { get; set; }
             public LogPropertyCondition conditions { get; set; }
+        }
+
+        public class Log : LogBase
+        {
+            public LogProperty properties { get; set; }
+        }
+
+        public class LogRecords
+        {
+            public List<Log> records { get; set; }
+        }
+    }
+
+    namespace LoadBalancLoadBalancerProbeHealthStatuserEvent
+    {
+        public class LogProperty
+        {
+            public string publicIpAddress { get; set; }
+
+            public string port { get; set; }
+
+            public string totalDipCount { get; set; }
+
+            public string dipDownCount { get; set; }
+
+            public string healthPercentage { get; set; }
+        }
+
+        public class Log : LogBase
+        {
+            public LogProperty properties { get; set; }
+        }
+
+        public class LogRecords
+        {
+            public List<Log> records { get; set; }
+        }
+    }
+
+    namespace LoadBalancerAlertEvent
+    {
+        public class EventProperty
+        {
+            [JsonProperty(propertyName: "public ip address")]
+            public string publicIpAddress { get; set; }
+        }
+
+        public class LogProperty
+        {
+            public string eventName { get; set; }
+
+            public string eventDescription { get; set; }
+
+            public EventProperty eventProperties { get; set; }
         }
 
         public class Log : LogBase

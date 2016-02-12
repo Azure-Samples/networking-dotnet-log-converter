@@ -13,6 +13,8 @@ namespace PowerBIConnector
 {
     using System;
 
+    public enum ResourceType { NETWORKSECURITYGROUPS, LOADBALANCERS };
+
     /// <summary>
     /// Utility class used to generate log storage Uri. 
     /// </summary>
@@ -29,18 +31,17 @@ namespace PowerBIConnector
         private readonly string subscriptionId;
         private readonly string resourceGroupsName;
         private readonly string providersName;
-        private readonly string resourceType;
+        private ResourceType resourceType;
         private readonly string resourceTypeName;
         private readonly string blobName;
 
-        public StorageURL(Uri containerUri, string subscriptionId, string resourceGroupsName, string providersName, string resourceTypeName, string resourceType = NETWORKSECURITYGROUPS, string blobName = DEFAULTLOGBLOB)
+        public StorageURL(Uri containerUri, string subscriptionId, string resourceGroupsName, string providersName, string resourceTypeName, ResourceType resourceType, string blobName = DEFAULTLOGBLOB)
         {
             if ((containerUri == null)
                 || String.IsNullOrWhiteSpace(subscriptionId)
                 || String.IsNullOrWhiteSpace(resourceGroupsName)
                 || String.IsNullOrWhiteSpace(providersName)
                 || String.IsNullOrWhiteSpace(resourceTypeName)
-                || String.IsNullOrWhiteSpace(resourceType)
                 || String.IsNullOrWhiteSpace(blobName))
             {
                 throw new PowerBIConnectorException("Invalid null argument found.");

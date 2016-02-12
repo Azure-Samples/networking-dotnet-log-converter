@@ -67,7 +67,7 @@ namespace CountersLogConverterSample
 
             Console.WriteLine("Export completed.");
             Console.WriteLine("Press any key to exit");
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace CountersLogConverterSample
             CloudBlobContainer container = blobClient.GetContainerReference(CounterContainerName);
 
             // Instantiate the URL generator.
-            StorageURL storageUrl = new StorageURL(container.Uri, SubscriptionID, ResrouceGroupsName, ProviderName, ResrouceTypeName);
+            StorageURL storageUrl = new StorageURL(container.Uri, SubscriptionID, ResrouceGroupsName, ProviderName, ResrouceTypeName, ResourceType.NETWORKSECURITYGROUPS);
 
             List<Log> logs = new List<Log>();
 

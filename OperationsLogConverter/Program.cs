@@ -30,13 +30,13 @@ namespace OperationsLogConverterSample
         /************************************************************************************* 
          ** Read this to configure your subscriptionid, tenantid, client id and uri 
          ** 1.	SubscriptionID: 
-         **        1. https://manage.windowsazure.com > Settings > SUBSCRIPTION ID 
+         **        a. https://manage.windowsazure.com > Settings > SUBSCRIPTION ID 
          **           OR
-         **        2. https://portal.azure.com > Browse > Subscriptions > SUBSCRIPTION ID 
+         **        b. https://portal.azure.com > Browse > Subscriptions > SUBSCRIPTION ID 
          ** 2.	For TenantID/ClientID/URI follow the "Set up authentication using the Management Portal" step in Authenticating Azure Resource Manager requests 
-         **        1. TenantID - found in Step 3.3 
-         **        2. ClientID(aka Application ID) - found in Step 3.3 
-         **        3. URI(aka Redirect URI) - found in Step 1.4 
+         **        a. TenantID - found in Step 3.3 
+         **        b. ClientID(aka Application ID) - found in Step 3.3 
+         **        c. URI(aka Redirect URI) - found in Step 1.4 
          *************************************************************************************/
 
         private const string SubscriptionID = "<Azure Subscription ID>";
@@ -79,7 +79,7 @@ namespace OperationsLogConverterSample
 
             Console.WriteLine("Export completed.");
             Console.WriteLine("Press any key to exit");
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         private static string GetAuthorizationHeader()

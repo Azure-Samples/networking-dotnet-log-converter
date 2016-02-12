@@ -28,12 +28,12 @@ The counters logs are stored in the Azure Storage Container as JSON blobs
 ```
 {
    "time": "2015-09-11T23:14:22.6940000Z",
-   "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
+   "systemId": "e22a0996-e5a7-XXXX-XXXX-4357a6e8f0c5",
    "category": "NetworkSecurityGroupRuleCounter",
-   "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRPFOO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRPFOO",
+   "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-XXXX-XXXX-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRPFOO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRPFOO",
    "operationName": "NetworkSecurityGroupCounters",
    "properties": {
-                  "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
+                  "vnetResourceGuid":"{DD0074B1-4CB3-XXXX-XXXX-8719DFBA3568}",
                   "subnetPrefix":"10.0.0.0/24",
                   "macAddress":"001517D9C43C",
                   "ruleName":"DenyAllOutBound",
@@ -62,19 +62,19 @@ Converted .CSV file of counter log has following columns
 
 #####2.  EventsLogConverter
 
-In order to use this code, logging must be turned on via SDK or Ibiza portal (soon to be released)
-and familiarity with Azure Resource Manager is required.
+In order to use this code, logging must be turned on.
+Familiarity with Azure Resource Manager is required.
 
 The events logs are stored in the Azure Storage Container as JSON blobs
 ```
 {
    "time": "2015-09-11T23:05:22.6860000Z",
-   "systemId": "e22a0996-e5a7-4952-8e28-4357a6e8f0c5",
+   "systemId": "e22a0996-e5a7-XXXX-XXXX-4357a6e8f0c5",
    "category": "NetworkSecurityGroupEvent",
    "resourceId": "/SUBSCRIPTIONS/D763EE4A-9131-455F-8C5E-876035455EC4/RESOURCEGROUPS/INSIGHTOBONRPFOO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/NSGINSIGHTOBONRPFOO",
    "operationName": "NetworkSecurityGroupEvents",
    "properties": {
-                  "vnetResourceGuid":"{DD0074B1-4CB3-49FA-BF10-8719DFBA3568}",
+                  "vnetResourceGuid":"{DD0074B1-4CB3-XXXX-XXXX-8719DFBA3568}",
                   "subnetPrefix":"10.0.0.0/24",
                   "macAddress":"001517D9C43C",
                   "ruleName":"AllowVnetOutBound",
@@ -150,3 +150,75 @@ Converted .CSV file of operations log has following columns.
 
 ---
 
+#####4.  LoadBalancerAlertEventLogConverter
+
+In order to use this code, logging must be turned on, for how-to: https://github.com/Azure/azure-content/blob/master/articles/load-balancer/load-balancer-monitor-log.md
+
+The alert event logs are stored in the Azure Storage Container as JSON blobs
+```
+{
+	"time": "2016-01-26T10:37:46.6024215Z",	
+	"systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
+	"category": "LoadBalancerAlertEvent",
+	"resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
+	"operationName": "LoadBalancerProbeHealthStatus",
+	"properties": {
+				   "eventName": "Resource Limits Hit",
+				   "eventDescription": "Ports exhausted",
+				   "eventProperties": {
+									   "public ip address": "40.117.227.32"
+									  }
+				   }
+}
+```
+
+Converted .CSV file of alert event log has following columns
+
+1. *time*
+2. *systemId*
+3. *category*
+3. *resourceId*
+4. *operationName*
+5. *properties.eventName*
+6. *properties.eventDescription*
+7. *properties.eventProperties.publicIpAddress*
+
+---
+
+#####5.  LoadBalancerHealthProbeLogConverter
+
+In order to use this code, logging must be turned on, for how-to: https://github.com/Azure/azure-content/blob/master/articles/load-balancer/load-balancer-monitor-log.md
+
+The healt status event logs are stored in the Azure Storage Container as JSON blobs
+```
+{
+    "time": "2016-01-26T10:37:46.6024215Z",
+    "systemId": "32077926-b9c4-42fb-94c1-762e528b5b27",
+    "category": "LoadBalancerProbeHealthStatus",
+    "resourceId": "/SUBSCRIPTIONS/XXXXXXXXXXXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX/RESOURCEGROUPS/RG7/PROVIDERS/MICROSOFT.NETWORK/LOADBALANCERS/WWEBLB",
+    "operationName": "LoadBalancerProbeHealthStatus",
+    "properties": {
+        "publicIpAddress": "40.83.190.158",
+        "port": "81",
+        "totalDipCount": 2,
+        "dipDownCount": 0,
+        "healthPercentage": 100.000000
+    }
+}
+
+```
+
+Converted .CSV file of healt status log has following columns
+
+1. *time*
+2. *systemId*
+3. *category*
+3. *resourceId*
+4. *operationName*
+5. *properties.publicIpAddress*
+6. *properties.port*
+7. *properties.totalDipCount*
+8. *properties.dipDownCount*
+9. *properties.healthPercentage*
+
+---
