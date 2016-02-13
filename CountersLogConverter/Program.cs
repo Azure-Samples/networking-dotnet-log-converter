@@ -99,9 +99,9 @@ namespace CountersLogConverterSample
             {
                 Console.WriteLine(logTimeStamp);
 
-                Uri storageBlogUrl = storageUrl.GetURL(logTimeStamp);
+                Uri storageblobUrl = storageUrl.GetURL(logTimeStamp);
 
-                CloudBlockBlob blockBlob = new CloudBlockBlob(storageBlogUrl, storageAccount.Credentials);
+                CloudBlockBlob blockBlob = new CloudBlockBlob(storageblobUrl, storageAccount.Credentials);
 
                 MemoryStream memstream = new MemoryStream();
 
@@ -131,7 +131,7 @@ namespace CountersLogConverterSample
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{ex.Message} - {storageBlogUrl}");
+                    Console.WriteLine($"{ex.Message} - {storageblobUrl}");
                 }
             }
 
