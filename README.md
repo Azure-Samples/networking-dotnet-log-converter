@@ -150,7 +150,7 @@ Converted .CSV file of operations log has following columns.
 
 ---
 
-#####4.  LoadBalancerAlertEventLogConverter
+#####4.  LoadBalancerAlertLogConverter
 
 In order to use this code, logging must be turned on, for how-to: https://github.com/Azure/azure-content/blob/master/articles/load-balancer/load-balancer-monitor-log.md
 
