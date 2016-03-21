@@ -16,7 +16,8 @@ Code for downloading operational network logs and converting them to .CSV files.
 * Cloud Explorer for Visual Studio 2015 - [Visual Studio Extension](https://visualstudiogallery.msdn.microsoft.com/84e83a7c-9606-4f9f-83dd-0f6182f13add) (recommended)
  
 ## Solution Contents
-The solution contains 3  executable projects CountersLogConverter, EventsLogConverter and OperationsLogConverter.
+The solution contains 5 executable console app projects CountersLogConverter, EventsLogConverter, OperationsLogConverter, LoadBalancerAlertLogConverter and LoadBalancerHealthProbeLogConverter.
+
 
 
 #####1.  CountersLogConverter
